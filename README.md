@@ -1,1 +1,0 @@
-# HexaSlider_Project_integration
