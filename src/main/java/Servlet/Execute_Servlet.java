@@ -16,15 +16,17 @@ public class Execute_Servlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/index.jsp");
-		dispatcher.forward(request, response);
+		// リクエストパラメータを取得
+		String action = request.getParameter("action");
+		String targetJsp = "WEB-INF/jsp/index.jsp"; // デフォルトはマイページ等があるメイン画面
 
-		//テスト
-		//テスト２
-		//テスト３
-		//テスト41
-		//テスト５
-	//テスト６
+		// actionの値によってフォワード先を切り替え
+		if ("shop".equals(action)) {
+			targetJsp = "WEB-INF/jsp/monodata_shop.jsp";
+		}
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher(targetJsp);
+		dispatcher.forward(request, response);
 		
 	}
 
